@@ -1,0 +1,13 @@
+W1 rows 600 refusals 566 refusals_attr 0
+  keys-bound 129 attr 0
+  comment-cap 16 attr 0
+  vote-409 276 attr 0
+  identity-required 421 attr 0
+W2 rows 600 refusals 421 refusals_attr 1
+  keys-bound 56 attr 0
+  comment-cap 89 attr 0
+  vote-409 105 attr 0
+  vote-403 12 attr 0
+  register 10 attr 0
+  identity-required 262 attr 0
+TOTAL identity-required 683 attr 0
