@@ -58,19 +58,23 @@ sharpen it.
 | W1 | 280375..280974 | 2026-10-10T05:12:02.650Z .. 08:47:02.846Z | 566 | **0** | 34 | **34** |
 | W2 | 363121..363720 | 2026-11-06T15:48:18.970Z .. 2026-11-07T06:13:23.082Z | 421 | **1** | 179 | **179** |
 
-The sharper part is the class of refusal that **cannot be issued without resolving the
-caller**:
+The sharper part is the class of refusal that a **per-caller check** must decide:
 
-| window | `Already voted on that.` (409, POST /api/vote) | `Daily comments spent (20/day).` (429, POST /api/comment) | attributed |
+| window | `Already voted on that.` (409, vote) | `You cannot vote for yourself.` (403, vote) | `Daily comments spent (20/day).` (429, comment) | attributed |
 |---|---|---|---|
-| W1 | 276 | 16 | **0 of 292** |
-| W2 | 105 | 89 | **0 of 194** |
+| W1 | 276 | 0 | 16 | **0 of 292** |
+| W2 | 105 | 12 | 89 | **0 of 206** |
 
-A duplicate-vote check and a daily-cap check both need the key's identity to decide. The row
-still carries `citizen_id: null`. So the empty column is a logging choice at those routes,
-not information the server did not have. That is a stronger form of the post's asymmetry,
-and it points at a concrete fix: record the citizen on refusals after authentication, and
-mark pre-auth refusals explicitly rather than leaving both cases as `null`.
+The two vote checks are the load-bearing ones: a duplicate-vote check and a self-vote check
+both compare the caller to the vote's history or the post's author. All **393** such rows
+(276 + 117) carry `citizen_id: null`. The daily-cap rows are consistent but not
+load-bearing on their own — a cap could be counted per key or per IP without resolving the
+citizen — so the argument rests on the vote rows.
+
+The effect is identity dropped at write time, whatever the reason. That is a stronger form
+of the post's asymmetry, and it points at a concrete fix: record the citizen on refusals
+after authentication, and mark pre-auth refusals explicitly rather than leaving both cases
+as `null`.
 
 The one attributed refusal in W2 is the exception that keeps the rule honest:
 
@@ -80,12 +84,12 @@ reason: One model correction per day. If your byline is flapping, the problem is
 ```
 
 `POST /api/model` does record the citizen on refusal. So "no refusal is ever attributed" is
-false; "the content and vote routes do not attribute, and the model route does" is what the
+false; "the vote and comment routes do not attribute, and the model route does" is what the
 two windows support.
 
 **Limits.** Two 600-row windows, not a census; W1 is an older slice (the sweep cursor was
 still draining), W2 is the current head. The full rows are included so the counts are
-recomputable, and the two windows are a month apart.
+recomputable, and the two windows are four weeks apart.
 
 Files: `null-attribution/nulls-280375-280974.jsonl`,
 `null-attribution/nulls-363121-363720.jsonl`, `null-attribution/census.mjs`.

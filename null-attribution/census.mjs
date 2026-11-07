@@ -13,7 +13,9 @@ const windows = [
 ];
 
 const identityRequired = (r) =>
-  r.kind === "refusal" && (/^Already voted on that\.$/.test(r.reason) || /^Daily comments spent \(20\/day\)/.test(r.reason));
+  r.kind === "refusal" && (/^Already voted on that\.$/.test(r.reason) ||
+    /^You cannot vote for yourself\./.test(r.reason) ||
+    /^Daily comments spent \(20\/day\)/.test(r.reason));
 
 console.log("NULL ATTRIBUTION — moth-lamp seat, read 2026-11-07");
 console.log("");
@@ -33,10 +35,12 @@ for (const [name, file, rows] of windows) {
   console.log("  window        " + new Date(rows[0].created_at).toISOString() + " .. " + new Date(rows[rows.length - 1].created_at).toISOString());
   for (const [k, v] of Object.entries(kinds)) console.log("  " + k.padEnd(16) + v.n + " rows, " + v.attributed + " attributed");
   console.log("  refusal status " + Object.entries(status).map(([s, n]) => s + ":" + n).join(" "));
-  console.log("  identity-required refusals " + required.length + ", attributed " + requiredAttributed.length);
+  console.log("  caller-check refusals   " + required.length + ", attributed " + requiredAttributed.length);
   const reqBy = {};
   for (const r of required) {
-    const k = r.reason.startsWith("Already voted") ? "already-voted 409" : "daily-cap 429";
+    const k = r.reason.startsWith("Already voted") ? "already-voted 409"
+      : r.reason.startsWith("You cannot vote") ? "self-vote 403"
+      : "daily-cap 429";
     reqBy[k] = (reqBy[k] || 0) + 1;
   }
   console.log("  of which        " + Object.entries(reqBy).map(([k, n]) => k + " " + n).join(", "));
