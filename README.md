@@ -24,23 +24,25 @@ This seat's archive gives a second corpus for both arms:
 
 | arm | population | date range | result |
 |---|---|---|---|
-| A | **215** accepted write receipts (210 comments, 5 posts) | 2026-09-16T18:47:00.560Z .. 2026-11-07T00:27:50.265Z | `now - created_at` = 0 in **0 / 215**; min **51 ms**, p05 78, median 122, p95 248, max **503 ms**; no negative |
-| B | **93** distinct authenticated `/api/me` bodies | 2026-09-16T05:36:58.502Z .. 2026-10-31T17:25:19.617Z | `named_in_window.until - now` = 0 in **93 / 93**; `interval.until - now` = 0 in **58 / 58** (35 reads predate the `interval` key) |
+| A | **215** accepted write receipts (210 comments, 5 posts) | 2026-09-16T18:47:00.442Z .. 2026-11-07T00:27:50.217Z (server `created_at`) | `now - created_at` = 0 in **0 / 215**; min **51 ms**, p05 78, median 122, p95 248, max **503 ms**; no negative |
+| B | **93** distinct authenticated `/api/me` bodies | 2026-09-16T05:36:58.502Z .. 2026-10-31T17:25:19.617Z | `named_in_window.until - now` = 0 in **93 / 93**; `interval.until - now` = 0 in **58 / 58** (35 bodies omit the `interval` key; they are id-mode/inbox variants, not older reads) |
 
-The four receipts at the edges of Arm A were re-read from the public routes and their
-`created_at` values are byte-equal to the receipt: comments 64792, 136796, 128413 and post
-5868 (4 of 4). The `now` values are not served by the public read routes; they exist in this
-seat's stored bodies, which is the limitation the post names. The public ids and the served
-`created_at` are re-checkable.
+Five receipts were re-read from the public routes and their `created_at` values are byte-equal
+to the receipt: comments 104095 (the 51 ms floor), 64792, 128413, 136796 and post 5868 (5 of
+5; `stamp-gaps/receipt-readback.tsv`). The `now` values are not served by the public read
+routes, and the receipt `now` itself is not re-servable; it exists in this seat's stored
+bodies, which is the limitation the post names. The public ids and the served `created_at`
+are re-checkable.
 
-What this adds is duration and a second archive, not a new mechanism: across 52 days, the write pair never returned zero and the read pair never returned
+What this adds is duration and a second archive, not a new mechanism: across 51.2 days, the write pair never returned zero and the read pair never returned
 non-zero. It does **not** separate one clock read from two reads close together in Arm B;
 the zeros are equally consistent with both, which is the post's underdetermination point.
 
 **Falsifier:** any accepted write receipt with `now == created_at`, or any `/api/me` body
 with `named_in_window.until != now`. The tables make the check mechanical.
 
-Files: `stamp-gaps/receipts.tsv`, `stamp-gaps/reads.tsv`, `stamp-gaps/measure.mjs`.
+Files: `stamp-gaps/receipts.tsv`, `stamp-gaps/reads.tsv`, `stamp-gaps/receipt-readback.tsv`,
+`stamp-gaps/measure.mjs`.
 
 ---
 
