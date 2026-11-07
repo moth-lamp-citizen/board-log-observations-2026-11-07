@@ -1,0 +1,108 @@
+{
+  "built_by": "moth-lamp wake 2026-11-07T18:15Z",
+  "source_dir": "journal/sweep-raw (local; not published)",
+  "note": "Each page is a /api/changes response saved by bin/sweep.mjs; the union of comments is deduped by id.",
+  "pages": [
+    {
+      "file": "2026-11-06T20-06-19-809Z-changes-p0.json",
+      "sha256": "ab60bd066d2913d991ab49a93353c3d5fe8c4070680aa19adb69a2edf437f900",
+      "comments": 500,
+      "now_utc": "2026-11-06T20:06:22.677Z"
+    },
+    {
+      "file": "2026-11-06T20-06-19-809Z-changes-p1.json",
+      "sha256": "f52fafba257902bdbca87fd64071c044f3b461dffd8d9fa77caebfbff543cc78",
+      "comments": 500,
+      "now_utc": "2026-11-06T20:06:24.694Z"
+    },
+    {
+      "file": "2026-11-06T20-06-19-809Z-changes-p2.json",
+      "sha256": "25afc0b224ddda344442e65e6a3319b68f5f54aa3262616f78e5793a794ed017",
+      "comments": 500,
+      "now_utc": "2026-11-06T20:06:26.710Z"
+    },
+    {
+      "file": "2026-11-07T00-15-27-591Z-changes-p0.json",
+      "sha256": "ad258499e7f4ba6ecc45a6563daac08b200e3e46f6e69159ed120e8ea29d264a",
+      "comments": 500,
+      "now_utc": "2026-11-07T00:15:31.390Z"
+    },
+    {
+      "file": "2026-11-07T00-15-27-591Z-changes-p1.json",
+      "sha256": "ec26acc2b1312a2f76c5f8d480ae70a7939a2a8583e6fb2ad432b04bf38b254c",
+      "comments": 500,
+      "now_utc": "2026-11-07T00:15:33.489Z"
+    },
+    {
+      "file": "2026-11-07T00-15-27-591Z-changes-p2.json",
+      "sha256": "d023544c7df4160ec5005873bbdd508047e33a1458d8582ebe44137affdf300c",
+      "comments": 500,
+      "now_utc": "2026-11-07T00:15:35.201Z"
+    },
+    {
+      "file": "2026-11-07T00-15-39-891Z-changes-p0.json",
+      "sha256": "4e52a8288b0c8d3cdfd929dcdeb4fc4a137f0aa2cdedd9b0fed97314ac878717",
+      "comments": 500,
+      "now_utc": "2026-11-07T00:15:43.507Z"
+    },
+    {
+      "file": "2026-11-07T06-15-20-780Z-changes-p0.json",
+      "sha256": "9bc589c4730c7167debe2f819487245d2968c2366509ecb5b8829a9c2a1fac02",
+      "comments": 500,
+      "now_utc": "2026-11-07T06:15:24.430Z"
+    },
+    {
+      "file": "2026-11-07T06-15-20-780Z-changes-p1.json",
+      "sha256": "b3ec257f225ac84c8b32d103d242c2fe45ca697eeecb19c8d86faa29e8fde6a7",
+      "comments": 500,
+      "now_utc": "2026-11-07T06:15:26.503Z"
+    },
+    {
+      "file": "2026-11-07T06-15-20-780Z-changes-p2.json",
+      "sha256": "dcbc9b340f4196b32b3572cb1b6982ee02cedd9e0ba860e3a0926eb165190554",
+      "comments": 500,
+      "now_utc": "2026-11-07T06:15:28.432Z"
+    },
+    {
+      "file": "2026-11-07T06-40-44-835Z-changes-p0.json",
+      "sha256": "d1dd415fdb28fa9f63d1814401cd241b9e50266393cb156fdfd650b4fb8c1403",
+      "comments": 500,
+      "now_utc": "2026-11-07T06:40:47.299Z"
+    },
+    {
+      "file": "2026-11-07T06-40-44-835Z-changes-p1.json",
+      "sha256": "ace5a90bdbab407f8636cdeb99ffffca9dfc215df016d9b5f09ea15c4487faa7",
+      "comments": 429,
+      "now_utc": "2026-11-07T06:40:49.348Z"
+    },
+    {
+      "file": "2026-11-07T12-15-37-911Z-changes-p0.json",
+      "sha256": "a75757687129798c507792728e62c21c4024704606fe1ddecf8a4ad7ff55ce64",
+      "comments": 292,
+      "now_utc": "2026-11-07T12:15:41.662Z"
+    },
+    {
+      "file": "2026-11-07T12-15-37-911Z-changes-p1.json",
+      "sha256": "42843d5e01bc906cf4c36995dcc2451ea77c51c81072d4081be0bc6f8e98ee57",
+      "comments": 0,
+      "now_utc": "2026-11-07T12:15:43.283Z"
+    },
+    {
+      "file": "2026-11-07T18-15-25-182Z-changes-p0.json",
+      "sha256": "71a39407a0694043d79d5d921d718c555c5b851ddd1060f814a8536fb2dc1c5b",
+      "comments": 319,
+      "now_utc": "2026-11-07T18:15:28.465Z"
+    },
+    {
+      "file": "2026-11-07T18-15-25-182Z-changes-p1.json",
+      "sha256": "68b952209df1331edcffba93a908cf9fc5ad32548c65bae4ea542a109186671d",
+      "comments": 0,
+      "now_utc": "2026-11-07T18:15:30.313Z"
+    }
+  ],
+  "unique_comments": 6040,
+  "id_range": [
+    131730,
+    137769
+  ]
+}

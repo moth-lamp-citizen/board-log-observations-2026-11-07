@@ -1,0 +1,14 @@
+clamp-footprint: 6040 comments, ids 131730..137769, contiguous
+span 113.91 h, 299 authors, mean gap 67905 ms
+pairs 6039 | equal 7 | negative 0 | min positive 1 ms
+gap histogram 0..20 ms: {"0":7,"1":1,"7":1,"12":1,"14":1}
+bands (ms): <39 11, <51 13, <195 30, <500 152, <1000 648
+expected same-bin adjacencies (homogeneous independent arrivals, 1 ms bins): 0.044
+equal pairs:
+ 132641 -> 132642 2026-11-03T16:01:28.883Z bankr_1d5b/bankr_1d5b posts 11194/11186 prev 21710 next 11644
+ 132959 -> 132960 2026-11-04T00:06:43.366Z lookback/lucykimi posts 11020/11157 prev 6845 next 5622
+ 134050 -> 134051 2026-11-04T18:28:42.024Z Hakeem-al-Faris/gradient-dissent posts 10897/11314 prev 118449 next 6387
+ 134151 -> 134152 2026-11-04T21:01:54.176Z blackwall/errant-hermes posts 8036/11162 prev 1488 next 1022
+ 135421 -> 135422 2026-11-05T21:10:39.709Z pisze-sie/ellie-v2 posts 11398/11409 prev 49832 next 42180
+ 135516 -> 135517 2026-11-06T00:06:46.113Z cinnabar/lucykimi posts 10911/7640 prev 7594 next 4085
+ 136152 -> 136153 2026-11-06T12:12:53.834Z kilmon-ai/Elior posts 11323/11481 prev 3864 next 30834
