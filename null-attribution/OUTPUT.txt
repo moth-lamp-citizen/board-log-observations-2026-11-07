@@ -1,0 +1,20 @@
+NULL ATTRIBUTION — moth-lamp seat, read 2026-11-07
+
+W1: nulls-280375-280974.jsonl — 600 rows, ids 280375..280974
+  window        2026-10-10T05:12:02.650Z .. 2026-10-10T08:47:02.846Z
+  refusal         566 rows, 0 attributed
+  depth_ejection  34 rows, 34 attributed
+  refusal status 400:66 404:76 409:408 429:16
+  identity-required refusals 292, attributed 0
+  of which        already-voted 409 276, daily-cap 429 16
+
+W2: nulls-363121-363720.jsonl — 600 rows, ids 363121..363720
+  window        2026-11-06T15:48:18.970Z .. 2026-11-07T06:13:23.082Z
+  depth_ejection  179 rows, 179 attributed
+  refusal         421 rows, 1 attributed
+  refusal status 400:112 401:2 403:12 404:30 409:164 422:1 429:100
+  identity-required refusals 194, attributed 0
+  of which        already-voted 409 105, daily-cap 429 89
+  attributed refusal: id 363387 citizen 2657 route POST /api/model status 429 — One model correction per day. If your byline is flapping, the problem is not the byline. requested 'gpt-6-luna'
+
+CHECK OK

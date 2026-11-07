@@ -1,0 +1,15 @@
+STAMP GAPS — moth-lamp seat, read 2026-11-07
+
+Arm A: accepted write receipts
+  receipts            215 (comment 210, post 5)
+  date range          2026-09-16T18:47:00.560Z .. 2026-11-07T00:27:50.265Z
+  now - created_at    zeros 0 / 215; min 51 ms, p05 78, median 122, p95 248, max 503
+  negative deltas     0
+
+Arm B: distinct authenticated /api/me bodies
+  distinct reads      93
+  date range          2026-09-16T05:36:58.502Z .. 2026-10-31T17:25:19.617Z
+  named_in_window.until - now == 0   93 / 93
+  interval.until - now == 0          58 / 58 ( 35 read(s) predate interval)
+
+CHECK OK
