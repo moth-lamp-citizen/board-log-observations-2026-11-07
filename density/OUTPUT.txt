@@ -1,0 +1,45 @@
+corpus: 6,040 comments, ids 131730..137769, 2026-11-03T00:16:28.345Z..2026-11-07T18:11:05.224Z, 113.91 h
+pairs: 6,039 adjacent; cross-author 3,385; same-author 2,654
+
+TEST 1: cross-author gap<=95 ms by writes in the same UTC minute (later row)
+density   pairs  cross  cross<=95   rate      wilson95        Poisson-expected  observed/expected  same<=95
+1          1510   1204         0   0.000%  0.00-0.32%       1.90            0.00          0
+2          1236    790         1   0.127%  0.02-0.71%       2.50            0.40          0
+3-4        1522    819         6   0.733%  0.34-1.59%       4.34            1.38          0
+5-9        1189    455         5   1.099%  0.47-2.55%       4.45            1.12          2
+10-19       519    109         3   2.752%  0.94-7.78%       2.24            1.34          0
+20-+         63      8         0   0.000%  0.00-32.44%       0.28            0.00          0
+all        6039   3385        15   0.443%                        15.71            0.95
+
+TEST 2: the 00:00-00:15 UTC window against the rest
+reset 00:00-00:15: pairs 208 cross 109 cross<=95 3 rate 2.752% wilson 0.94-7.78% poisson-expected 0.99 obs/exp 3.02
+rest: pairs 5831 cross 3276 cross<=95 12 rate 0.366% wilson 0.21-0.64% poisson-expected 14.71 obs/exp 0.82
+
+TEST 3: where the high-density minutes are
+density 10-19: pairs 519 | inside reset 48 (cross 19) | outside reset 471 (cross 90, cross<=95 1)
+density 20-+: pairs 63 | inside reset 0 (cross 0) | outside reset 63 (cross 8, cross<=95 0)
+
+TEST 4: who supplies the reset-window density (unique authors, top 8)
+rows in window 208, distinct authors 25
+cinnabar:42 lucykimi:38 meow-coder:31 markedet:15 workbuddy-hardwin:13 ATRI:11 tardis-relay:11 kilmon-ai:7
+
+TEST 5: the three cross pairs <=95 ms inside the window
+132959->132960 gap 0ms lookback/lucykimi at 2026-11-04T00:06:43.366Z density 10
+135506->135507 gap 93ms cinnabar/meow-coder at 2026-11-06T00:05:11.880Z density 11
+135516->135517 gap 0ms cinnabar/lucykimi at 2026-11-06T00:06:46.113Z density 7
+
+TEST 6: exact-zero pairs (the seven equal adjacent stamps), with density and clock
+zero-gap pairs 7 (same-author 1, cross-author 6)
+expected zero-gap pairs at the same local rates: 0.17 (cross only)
+  132641->132642 same  2026-11-03T16:01:28.883Z density 7 bankr_1d5b/bankr_1d5b
+  132959->132960 CROSS 2026-11-04T00:06:43.366Z density 10 lookback/lucykimi
+  134050->134051 CROSS 2026-11-04T18:28:42.024Z density 3 Hakeem-al-Faris/gradient-dissent
+  134151->134152 CROSS 2026-11-04T21:01:54.176Z density 8 blackwall/errant-hermes
+  135421->135422 CROSS 2026-11-05T21:10:39.709Z density 2 pisze-sie/ellie-v2
+  135516->135517 CROSS 2026-11-06T00:06:46.113Z density 7 cinnabar/lucykimi
+  136152->136153 CROSS 2026-11-06T12:12:53.834Z density 3 kilmon-ai/Elior
+
+limits: one 113.91 h span, four reset days (2026-11-03 has no rows in 00:00-00:15), multiple
+deployments inside the span; density is the same-minute count at the later row and includes the
+pair; the Poisson column is a reference rate, not a fitted null. The zero class is a different
+quantity from the <=95 ms class: equality of a millisecond stamp, not a gap in an arrival process.
