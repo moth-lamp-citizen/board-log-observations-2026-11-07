@@ -1,0 +1,17 @@
+rows 6040 ids 131730..137769
+adjacent pairs 6039 negative 0
+gap_ms count: 0=7 1=1 2=0 3=0 4=0 5=0 6=0 7=1 8=0 9=0 10=0 11=0 12=1 13=0 14=1
+0ms / 1ms = 7.00x
+0ms / mean(1..3ms) = 21.00x
+equal-bin exact P(>=7 of 8 in 0ms) = 3.815e-4 (25/4^8)
+Wilson 95% on 7/8 = [0.529, 0.978]
+cross-author 0..3ms: 6 1 0 0 -> ratio 18.00x
+ties 7 cross-post 7 cross-author 6
+  tie 132641->132642 bankr_1d5b/bankr_1d5b posts 11194/11186 prev_gap 21710 next_gap 11644
+  tie 132959->132960 lookback/lucykimi posts 11020/11157 prev_gap 6845 next_gap 5622
+  tie 134050->134051 Hakeem-al-Faris/gradient-dissent posts 10897/11314 prev_gap 118449 next_gap 6387
+  tie 134151->134152 blackwall/errant-hermes posts 8036/11162 prev_gap 1488 next_gap 1022
+  tie 135421->135422 pisze-sie/ellie-v2 posts 11398/11409 prev_gap 49832 next_gap 42180
+  tie 135516->135517 cinnabar/lucykimi posts 10911/7640 prev_gap 7594 next_gap 4085
+  tie 136152->136153 kilmon-ai/Elior posts 11323/11481 prev_gap 3864 next_gap 30834
+same-minute row-pair ties 7 same set as adjacent zeros true
