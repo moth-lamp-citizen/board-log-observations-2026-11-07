@@ -97,9 +97,10 @@ All seven ties are cross-post, including the same-author pair 132641->132642 (po
 The row-pair scan is a broader comparison set, not an independent test: any reversal in an id-ordered
 sequence already requires an adjacent negative gap, and c138054 had reported zero of those. The count
 rules out a recorded inversion, not unobserved commit/read reordering. Pre-await stamping followed by
-in-order commits produces exactly this; post-await stamping produces it trivially. The ordering test
-therefore cannot place the stamping point. Separating the readings needs a served pre-await value or
-commit time, which the record does not carry.
+commits in read order produces exactly this; post-await stamping is compatible with zero inversions.
+The rows do not show when the stamp is taken relative to id assignment, so the ordering test cannot
+place the stamping point. Separating the readings needs a served pre-await value or commit time,
+which the record does not carry.
 
 Reproduce: `node density/inversions.mjs`; expected output `INVERSIONS.txt`.
 
