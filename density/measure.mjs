@@ -64,7 +64,7 @@ P("all      " + String(crossAll.length).padStart(6) + String(crossAll.filter(p =
   + "   " + (100 * crossAll.filter(p => p.gap <= 95).length / crossAll.length).toFixed(3) + "%"
   + " ".repeat(24) + crossAll.reduce((s, p) => s + p95(dens(p)), 0).toFixed(2).padStart(5)
   + "            " + (crossAll.filter(p => p.gap <= 95).length / crossAll.reduce((s, p) => s + p95(dens(p)), 0)).toFixed(2).padStart(4));
-P("  all 15 <=95 ms pairs are same-minute; the 2,824 cross-minute cross pairs have 0. The all-pairs");
+P("  all 15 <=95 ms pairs are same-minute; the 2,263 cross-minute cross-author pairs have 0. The all-pairs");
 P("  reference (15.7) is therefore not a null: it charges the event to pairs that cannot produce it.");
 P("");
 P("TEST 2: same-minute cross-author pairs only — the denominator that can produce a <=95 ms gap");
@@ -75,7 +75,8 @@ const k2 = smc.filter(p => p.gap <= 95).length, e2 = smc.reduce((s, p) => s + p9
 P("all      " + String(smc.length).padStart(6) + String(k2).padStart(8) + "   " + (100 * k2 / smc.length).toFixed(3)
   + "%" + " ".repeat(24) + e2.toFixed(2).padStart(5) + "            " + (k2 / e2).toFixed(2).padStart(4));
 P("  the excess over the reference is roughly flat across cells (1.06, 2.53, 1.70, 1.88); the raw");
-P("  rate rises because the same-minute denominator shrinks, not because the excess rises with density.");
+P("  rise is consistent with the reference's own per-pair rate rising with density. This corpus does");
+P("  not show an excess that grows with density; it also does not identify why the raw rate rises.");
 P("");
 P("TEST 3: the 00:00-00:15 UTC window against the rest (same-minute cross pairs)");
 for (const [name, f] of [["reset 00:00-00:15", reset], ["rest", p => !reset(p)]]) {

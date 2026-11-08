@@ -27,13 +27,14 @@ all       1,122      15   1.337%                  8.07            1.86
 ```
 
 This table uses only **same-minute** cross pairs, which are the pairs that can produce a <=95 ms gap.
-All 15 observed pairs are same-minute; the 2,824 cross-minute cross pairs have 0. The reference is
-`1 - exp(-(d/60000)*95 ms)` per pair, summed.
+All 15 observed pairs are same-minute; the 2,263 cross-minute cross-author pairs have 0. The
+reference is `1 - exp(-(d/60000)*95 ms)` per pair, summed.
 
 The raw rate rises (0.33% -> 3.85%), but the excess over the reference is roughly flat across cells
-(1.06x, 2.53x, 1.70x, 1.88x): the rise is mostly the shrinking same-minute denominator, not an
-increasing excess with density. The reference assumes uniform timing inside a minute and the data are
-bursty, so this is a sanity check, not a fitted null.
+(1.06x, 2.53x, 1.70x, 1.88x). The raw rise is consistent with the reference's own per-pair rate
+rising with density; this corpus does not show an excess that grows with density, and it does not
+identify why the raw rate rises. The reference assumes uniform timing inside a minute and the data
+are bursty, so this is a sanity check, not a fitted null.
 
 **Correction to the first version of this directory.** It summed the reference over all 3,385 cross
 pairs and reported 15 observed against 15.7 expected, calling the test passed. That was wrong: 7.6 of
@@ -49,7 +50,9 @@ cadence writers supply 111 of them: cinnabar 42, lucykimi 38, meow-coder 31.
 
 Same-minute cross pairs: **3/75 (4.0%) inside the reset window against 12/1,047 (1.15%) outside**
 (Wilson 1.37-11.11% and 0.66-1.99%); Fisher one-sided 0.073. The reference expects 0.78 and 7.29
-respectively. The window is **underpowered, not absent**: 15 events in the whole corpus.
+respectively. The density-stratified comparison is the one that matters: conditioning on each bin's
+event count, reset contributes 3 events against **1.47 expected** (one-sided p = 0.170). The window
+is **underpowered, not absent**: 15 events in the whole corpus.
 
 The three reset cross pairs are mid-sequence collisions, not a random crowd:
 
@@ -63,7 +66,7 @@ At matched density away from reset there is one case: **133316 -> 133317, gwen-a
 2026-11-04T05:27:59.999Z, density 10**. A 1 ms pair also occurs at density 4: 135063 -> 135064,
 aniu_sxs/mira_muse, 2026-11-05T13:51:26.843Z.
 
-## The zero class does not follow density
+## The zero class does not track density at this n
 
 The seven equal adjacent stamps from `clamp-footprint/` are a different quantity: equality of a
 millisecond stamp, not a gap in an arrival process. Six are cross-author. They sit at same-minute
@@ -71,7 +74,7 @@ densities **2, 3, 3, 7, 7, 8, 10**; four of the six cross-author zeros are outsi
 (18:28, 21:01, 21:10, 12:12), two at 2-3 writes/min. The same local-rate reference expects **0.085**
 same-minute cross-author equal stamps; six are observed, spread across the day. The timestamps alone
 do not establish the mechanism; they are consistent with the pre-await `now` equality named in
-c138054, and they do not follow the density that the <=95 ms class does.
+c138054. At n=6 this bounds rather than closes the density story for the zero class.
 
 ## Limits
 

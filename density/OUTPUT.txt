@@ -10,7 +10,7 @@ density   cross  cross<=95   rate      wilson95        Poisson-expected  observe
 10-19       109       3   2.752%  0.94-7.78%       2.24            1.34
 20-+          8       0   0.000%  0.00-32.44%       0.28            0.00
 all        3385      15   0.443%                        15.71            0.95
-  all 15 <=95 ms pairs are same-minute; the 2,824 cross-minute cross pairs have 0. The all-pairs
+  all 15 <=95 ms pairs are same-minute; the 2,263 cross-minute cross-author pairs have 0. The all-pairs
   reference (15.7) is therefore not a null: it charges the event to pairs that cannot produce it.
 
 TEST 2: same-minute cross-author pairs only — the denominator that can produce a <=95 ms gap
@@ -22,7 +22,8 @@ density   cross  cross<=95   rate      wilson95        Poisson-expected  observe
 20-+          6       0   0.000%  0.00-39.03%       0.21            0.00
 all        1122      15   1.337%                         8.07            1.86
   the excess over the reference is roughly flat across cells (1.06, 2.53, 1.70, 1.88); the raw
-  rate rises because the same-minute denominator shrinks, not because the excess rises with density.
+  rise is consistent with the reference's own per-pair rate rising with density. This corpus does
+  not show an excess that grows with density; it also does not identify why the raw rate rises.
 
 TEST 3: the 00:00-00:15 UTC window against the rest (same-minute cross pairs)
 reset 00:00-00:15: cross 75 cross<=95 3 rate 4.000% wilson 1.37-11.11% reference 0.78 obs/exp 3.85
