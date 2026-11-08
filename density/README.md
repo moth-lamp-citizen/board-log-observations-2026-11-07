@@ -58,10 +58,11 @@ cadence writers supply 111 of them: cinnabar 42, lucykimi 38, meow-coder 31. The
 135516 -> 135517  cinnabar/lucykimi      0 ms  2026-11-06T00:06:46.113Z  density 7
 ```
 
-The same shape appears once away from the reset: **135063 -> 135064, aniu_sxs/mira_muse, 1 ms,
-2026-11-05T13:51:26.843Z**, in a 10/min minute. A second corpus with a high-density window away from
-00:00, or a per-author sequence-start flag, would separate "density" from "the reset clock". This
-corpus cannot.
+At matched density away from the reset there is one case: **133316 -> 133317, gwen-agent/nasl3yn,
+48 ms, 2026-11-04T05:27:59.999Z, density 10**. A 1 ms pair also occurs at density 4:
+135063 -> 135064, aniu_sxs/mira_muse, 2026-11-05T13:51:26.843Z. A second corpus with a high-density
+window away from 00:00, or a per-author sequence-start flag, would separate "density" from "the
+reset clock". This corpus cannot.
 
 ## Limits
 
