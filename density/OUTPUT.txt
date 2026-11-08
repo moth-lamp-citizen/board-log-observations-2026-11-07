@@ -1,23 +1,32 @@
 corpus: 6,040 comments, ids 131730..137769, 2026-11-03T00:16:28.345Z..2026-11-07T18:11:05.224Z, 113.91 h
 pairs: 6,039 adjacent; cross-author 3,385; same-author 2,654
 
-TEST 1: cross-author gap<=95 ms by writes in the same UTC minute (later row)
-density   pairs  cross  cross<=95   rate      wilson95        Poisson-expected  observed/expected  same<=95
-1          1510   1204         0   0.000%  0.00-0.32%       1.90            0.00          0
-2          1236    790         1   0.127%  0.02-0.71%       2.50            0.40          0
-3-4        1522    819         6   0.733%  0.34-1.59%       4.34            1.38          0
-5-9        1189    455         5   1.099%  0.47-2.55%       4.45            1.12          2
-10-19       519    109         3   2.752%  0.94-7.78%       2.24            1.34          0
-20-+         63      8         0   0.000%  0.00-32.44%       0.28            0.00          0
-all        6039   3385        15   0.443%                        15.71            0.95
+TEST 1: all cross-author pairs, by writes in the same UTC minute (later row)
+density   cross  cross<=95   rate      wilson95        Poisson-expected  observed/expected
+1          1204       0   0.000%  0.00-0.32%       1.90            0.00
+2           790       1   0.127%  0.02-0.71%       2.50            0.40
+3-4         819       6   0.733%  0.34-1.59%       4.34            1.38
+5-9         455       5   1.099%  0.47-2.55%       4.45            1.12
+10-19       109       3   2.752%  0.94-7.78%       2.24            1.34
+20-+          8       0   0.000%  0.00-32.44%       0.28            0.00
+all        3385      15   0.443%                        15.71            0.95
+  all 15 <=95 ms pairs are same-minute; the 2,824 cross-minute cross pairs have 0. The all-pairs
+  reference (15.7) is therefore not a null: it charges the event to pairs that cannot produce it.
 
-TEST 2: the 00:00-00:15 UTC window against the rest
-reset 00:00-00:15: pairs 208 cross 109 cross<=95 3 rate 2.752% wilson 0.94-7.78% poisson-expected 0.99 obs/exp 3.02
-rest: pairs 5831 cross 3276 cross<=95 12 rate 0.366% wilson 0.21-0.64% poisson-expected 14.71 obs/exp 0.82
+TEST 2: same-minute cross-author pairs only — the denominator that can produce a <=95 ms gap
+density   cross  cross<=95   rate      wilson95        Poisson-expected  observed/expected
+2           299       1   0.334%  0.06-1.87%       0.95            1.06
+3-4         440       6   1.364%  0.63-2.94%       2.37            2.53
+5-9         299       5   1.672%  0.72-3.85%       2.95            1.70
+10-19        78       3   3.846%  1.32-10.71%       1.60            1.88
+20-+          6       0   0.000%  0.00-39.03%       0.21            0.00
+all        1122      15   1.337%                         8.07            1.86
+  the excess over the reference is roughly flat across cells (1.06, 2.53, 1.70, 1.88); the raw
+  rate rises because the same-minute denominator shrinks, not because the excess rises with density.
 
-TEST 3: where the high-density minutes are
-density 10-19: pairs 519 | inside reset 48 (cross 19) | outside reset 471 (cross 90, cross<=95 1)
-density 20-+: pairs 63 | inside reset 0 (cross 0) | outside reset 63 (cross 8, cross<=95 0)
+TEST 3: the 00:00-00:15 UTC window against the rest (same-minute cross pairs)
+reset 00:00-00:15: cross 75 cross<=95 3 rate 4.000% wilson 1.37-11.11% reference 0.78 obs/exp 3.85
+rest: cross 1047 cross<=95 12 rate 1.146% wilson 0.66-1.99% reference 7.29 obs/exp 1.65
 
 TEST 4: who supplies the reset-window density (unique authors, top 8)
 rows in window 208, distinct authors 25
@@ -30,7 +39,7 @@ TEST 5: the three cross pairs <=95 ms inside the window
 
 TEST 6: exact-zero pairs (the seven equal adjacent stamps), with density and clock
 zero-gap pairs 7 (same-author 1, cross-author 6)
-expected zero-gap pairs at the same local rates: 0.17 (cross only)
+same-minute cross pairs expected to be equal at the same local rates: 0.085
   132641->132642 same  2026-11-03T16:01:28.883Z density 7 bankr_1d5b/bankr_1d5b
   132959->132960 CROSS 2026-11-04T00:06:43.366Z density 10 lookback/lucykimi
   134050->134051 CROSS 2026-11-04T18:28:42.024Z density 3 Hakeem-al-Faris/gradient-dissent
@@ -41,5 +50,6 @@ expected zero-gap pairs at the same local rates: 0.17 (cross only)
 
 limits: one 113.91 h span, four reset days (2026-11-03 has no rows in 00:00-00:15), multiple
 deployments inside the span; density is the same-minute count at the later row and includes the
-pair; the Poisson column is a reference rate, not a fitted null. The zero class is a different
-quantity from the <=95 ms class: equality of a millisecond stamp, not a gap in an arrival process.
+pair; the Poisson column assumes uniform timing inside a minute, and the data are bursty, so it
+is a reference rate, not a fitted null. The zero class is equality of a millisecond stamp, not a
+gap in an arrival process; the reference there is illustrative only.
