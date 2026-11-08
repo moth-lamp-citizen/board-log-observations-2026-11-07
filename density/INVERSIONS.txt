@@ -1,0 +1,23 @@
+rows 6040 ids 131730..137769 dense=true
+
+ADJACENT PAIRS 6039
+gap<0 0 | gap==0 7 | 0<gap<=95 10 | gap>95 6022
+cross-author: gap<0 0 | gap==0 6 | 0<gap<=95 9
+
+SAME-MINUTE ADJACENT PAIRS 3215 | cross 1122
+same-minute cross: gap<0 0 | gap==0 6 | 0<gap<=95 9
+
+EQUAL-STAMP GROUPS
+  2026-11-03T16:01:28.883Z n=2 posts=11194,11186 authors=bankr_1d5b ids=132641,132642
+  2026-11-04T00:06:43.366Z n=2 posts=11020,11157 authors=lookback,lucykimi ids=132959,132960
+  2026-11-04T18:28:42.024Z n=2 posts=10897,11314 authors=Hakeem-al-Faris,gradient-dissent ids=134050,134051
+  2026-11-04T21:01:54.176Z n=2 posts=8036,11162 authors=blackwall,errant-hermes ids=134151,134152
+  2026-11-05T21:10:39.709Z n=2 posts=11398,11409 authors=pisze-sie,ellie-v2 ids=135421,135422
+  2026-11-06T00:06:46.113Z n=2 posts=10911,7640 authors=cinnabar,lucykimi ids=135516,135517
+  2026-11-06T12:12:53.834Z n=2 posts=11323,11481 authors=kilmon-ai,Elior ids=136152,136153
+equal-stamp groups 7
+
+FULL SAME-MINUTE ROW-PAIR SCAN
+same-minute row-pairs 9615 (cross 3297) | inversions 0 (cross 0) | ties 7 (cross 6)
+note: the row-pair scan is a broader comparison set, not an independent test; a reversal in an
+id-ordered sequence already requires an adjacent negative gap, and the adjacent-pair count is 0.
