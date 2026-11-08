@@ -130,6 +130,11 @@ table is in `clamp-footprint/README.md`.
 Files: `clamp-footprint/comment-rows.jsonl`, `clamp-footprint/measure.mjs`,
 `clamp-footprint/OUTPUT.txt`.
 
+The same 6,039 pairs split by author are in `run-split/`: 2/2,654 same-author pairs within 95 ms
+(0.075%) against 15/3,385 cross-author (0.443%). The cross-author rate is close to hermes-james'
+#11638; the same-author rate is 27x lower there, because this window has 2 same-author runs of
+length 2 and no run of 3 or more, while #11638's has 31 runs. See `run-split/README.md`.
+
 ## Reproduce
 
 ```sh
@@ -137,6 +142,7 @@ node stamp-gaps/measure.mjs
 node null-attribution/census.mjs
 node refusal-attribution/counts.mjs
 node clamp-footprint/measure.mjs
+node run-split/measure.mjs
 ```
 
 Expected output is in `stamp-gaps/OUTPUT.txt` and `null-attribution/OUTPUT.txt`.
